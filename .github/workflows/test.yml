@@ -1,0 +1,52 @@
+name: test
+
+on: [push, pull_request]
+
+jobs:
+  unit:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install Node 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install NPM credentials
+        run: build/write-npmrc.sh
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install NPM Packages
+        run: yarn install
+      - name: Check licenses
+        run: yarn build:license-checker
+      - name: Test
+        run: yarn test
+      - uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ job.status }}
+          author_name: ${{ github.repository }} ${{ github.workflow }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()
+      - name: Build
+        run: yarn build
+      - name: Publish
+        run: npm publish
+        if: startsWith(github.event.ref, 'refs/tags')
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: upload-artifacts
+          path: var
+        if: always()

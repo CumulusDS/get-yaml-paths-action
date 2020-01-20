@@ -1,0 +1,82 @@
+{
+  "name": "package-template",
+  "version": "0.0.0",
+  "description": "Scaffolding for an Library Package",
+  "repository": "https://github.com/CumulusDS/package-template",
+  "author": "Cumulus Digital Systems",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": "^12.13.0"
+  },
+  "main": "lib/index.js",
+  "src": [
+    "bin, lib",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "run-p build:babel build:flow-copy-source build:license-checker",
+    "build:babel": "babel src --out-dir lib --ignore test.js",
+    "build:flow-copy-source": "flow-copy-source --ignore test.js src lib",
+    "build:license-checker": "license-checker --csv --out var/licenses.csv",
+    "clean": "shx rm -rf lib",
+    "git:push": "git push --follow-tags",
+    "publish:patch": "run-s version:patch git:push",
+    "publish:minor": "run-s version:minor git:push",
+    "publish:major": "run-s version:major git:push",
+    "sites": "node bin/sites.js",
+    "test": "run-p --aggregate-output test:**",
+    "test:flow:coverage-report": "flow-coverage-report -i 'src/**/*.js' -x 'test/**/*.js' -t html -t text --threshold 95 --output-dir var/coverage/flow",
+    "test:flow:status": "flow status",
+    "test:jest": "jest --color",
+    "test:lint": "eslint *.js src test",
+    "test:prettier": "prettier --list-different \"{src,test}/**/*.{js,jsx,yml}\" \"*.{js,yml}\"",
+    "version:patch": "yarn version --new-version patch",
+    "version:minor": "yarn version --new-version minor",
+    "version:major": "yarn version --new-version major"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "testEnvironment": "node",
+    "coverageDirectory": "var/coverage/test",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@cumulusds/flow-coverage-report": "^0.0.2",
+    "babel-eslint": "10.0.3",
+    "babel-jest": "^24.9.0",
+    "eslint": "6.7.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "flow-bin": "^0.112.0",
+    "flow-copy-source": "^2.0.9",
+    "flow-typed": "^2.5.1",
+    "git-describe": "^4.0.4",
+    "jest": "^24.9.0",
+    "license-checker": "^25.0.1",
+    "npm-run-all": "^4.1.3",
+    "prettier": "^1.14.0",
+    "shx": "^0.3.2"
+  }
+}
