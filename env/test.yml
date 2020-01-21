@@ -1,0 +1,4 @@
+foo:
+  bar: baz
+provider:
+  stage: green

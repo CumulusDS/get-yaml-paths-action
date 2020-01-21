@@ -1,0 +1,12 @@
+name: Get YML Paths
+description: A GitHub Action to access values of YAML files
+inputs:
+  file:
+    description: File to load
+    required: true
+outputs:
+  time:
+    description: The time we greeted you
+runs:
+  using: node12
+  main: dist/main.js

@@ -1,26 +1,46 @@
-# Package Template
+# Get YAML Paths
 
-This is a basic template for Cumulus library packages.
+This action reads a YAML file and outputs selected properties.
 
-You can use the template by cloning the template project from https://github.com/CumulusDS/package-template and unpacking into a new directory. Remember to update package.json, appveyor.yml and this documentation with the name and purpose of your new project. Create a new repo on GitHub for the new project. Connect your local repo to the new GitHub repo by changing the origin:
+The action uses lodash.get to access properties at the provided paths. The `file` input is the only required input. All other inputs are mapped into equally named outputs with the value at the given paths.
 
-1. Use the [package-template](https://github.com/CumulusDS/package-template) to create a GitHub repo for the new package.
-2. Configure standard secrets with the GitHub repo https://github.com/CumulusDS/REPOSITORY/settings/secrets
-    - `SLACK_WEBHOOK`
-    - `NODE_AUTH_TOKEN`
-3. Clone the new repo.
-    ```bash
-    git clone https://github.com/CumulusDS/sts-sites.git
-    ```
-4. Create the first feature branch in your local repo.
-5. Replace `PackageTemplate` and `Package Template` throughout the repo. Edit this file, `package.json` and `appveyor.yml` with the new service name.
-6. Push the feature branch. GitHub Actions should automatically build it.
-7. Change `"private": true"` in package.json; the "private" flag prevents publishing the package.
-7. Open the first pull request.
+## Inputs
 
-# Domain Distillation
+### `file`
 
-Please define your core domain here.
+**Required** The name of the file to load.
+
+### `name: path`
+
+Give each path to look-up as a `name: path` input pair.
+
+## Outputs
+
+The Action generates an output for `name` with the value at the corresponding `path`. Output names are all lowercase, due to limitations in GitHub Actions.
+
+## Example usage
+
+Given an input file `file.yml`:
+```yml
+foo:
+  bar: baz
+provider:
+  stage: green
+```
+
+A step definition like this:
+```
+uses: @cumulusds@v0.0.0
+with:
+  file: file.yml
+  bar: foo.bar
+  providerStage: provider.stage
+```
+sets the `baz` output to `bar` and sets the `providerstage` output (note all lower-case) to `green`.
+
+# See Also
+
+[get-json-paths-action](https://github.com/gr2m/get-json-paths-action)
 
 # Development
 
@@ -31,4 +51,4 @@ Please define your core domain here.
 
 ## License
 
-This package is not licensed.
+This package is [MIT licensed](LICENSE).

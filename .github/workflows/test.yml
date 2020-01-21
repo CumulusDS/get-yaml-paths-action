@@ -12,10 +12,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Install NPM credentials
-        run: build/write-npmrc.sh
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -31,19 +27,8 @@ jobs:
         run: yarn build:license-checker
       - name: Test
         run: yarn test
-      - uses: 8398a7/action-slack@v2
-        with:
-          status: ${{ job.status }}
-          author_name: ${{ github.repository }} ${{ github.workflow }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        if: always()
       - name: Build
         run: yarn build
-      - name: Publish
-        run: npm publish
-        if: startsWith(github.event.ref, 'refs/tags')
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
