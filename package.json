@@ -1,6 +1,6 @@
 {
   "name": "get-yaml-paths-action",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A GitHub Action to access deep values of YAML files",
   "repository": "https://github.com/CumulusDS/get-yaml-paths-action",
   "author": "Cumulus Digital Systems",
