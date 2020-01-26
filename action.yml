@@ -11,5 +11,5 @@ runs:
   using: node12
   main: dist/main.js
 branding:
-  icon: 'tool'
+  icon: 'box'
   color: 'yellow'
