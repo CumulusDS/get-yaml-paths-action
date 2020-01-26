@@ -98,11 +98,11 @@ Several commands are defined by the package.json scripts.
 
 `yarn test` runs the comprehensive set of automated tests. This includes the jest unit test, flow and eslint checks.
 
-`yarn flow:status` checks for flow type and lint errors. It is one of the checks included in `yarn test`.
+`yarn test:flow:status` checks for flow type and lint errors. It is one of the checks included in `yarn test`.
 
 `yarn git:push` pushes commits and tags to GitHub.
 
-`yarn test:unit` runs the jest unit tests. It is one of the checks included in `yarn test`.
+`yarn test:jest` runs the jest unit tests. It is one of the checks included in `yarn test`.
 
 `yarn lint` runs the ESLint check. It is one of the checks included in `yarn test`. Some lint errors can be automatically fixed by running `yarn lint --fix`.
 
@@ -231,21 +231,19 @@ The project is configured with a Continuous Integration server. The Continuous I
 
 ## Continuous Integration
 
-The project is required to be configured with a Continuous Integration server. The Continuous Integration server runs
-the tests and lint using the command `yarn test`. When AppVeyor is used for CI, the jest tests are reported to the
-[test result collector](https://ci.appveyor.com/project/shelltechworks/serverless/build/tests).
+The project uses GitHub actions for Continuous Integration. The CI build run
+the tests and lint using the command `yarn test`.
 
 # Release
 
-Our serverless framework projects have a rudimentary deployment pipeline. A deployment is started when a version tag
-(like "v1.2.3") is pushed to GitHub. The CI process is triggered by the tag. If the build passes, then CI creates a
-release on GitHub. Finally CI deploys to the _prod_ stage. At this time, we do not have steps for end-to-end testing or
-SQA review.
-
-Normal releases are made from the master branch. To bump the version number and start the process of publishing a
-release, run `yarn publish:patch`. This will set the package.json version to the next patch number and push a
+Releases are made from the master branch. To bump the version number and start the process of publishing a release, run `yarn publish:patch`. This will set the package.json version to the next patch number and push a
 tagged commit, triggering the deployment process.
 
-It is possible to make a _hotfix_ from a branch other than master, but do not to make a habit of it.
+[JavaScript GitHub Actions require dependencies to be checked-in] to the repo. This package uses webpack to run the build process: transpile with babel and compile the distribution bundle. The steps to publish a new version are:
+1. Run `yarn build` to compile the new version.
+2. Commit any code changes along with `dist/main.js` (the webpack output).
+3. Create a release tag by running `yarn publish:___` (`patch`, `minor` or `major`).
+4. Check that the CI build passes.
+5. In the GitHub web interface, navigate to the new tag. Create a release, enabling "Publish this Action to the GitHub Marketplace".
 
-To check the current production version, visit the AWS production console and navigate to the CloudFormation console. Select the corresponding stack and see Stack Info > Tags. The `VERSION` tag will show the current version.
+[JavaScript GitHub Actions require dependencies to be checked-in]: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-javascript-action#commit-and-push-your-action-to-github
