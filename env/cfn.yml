@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Sample CloudFormation Template
+
+Parameters:
+  Service:
+    Type: String
+    Description: Service name
+
+Resources:
+  CloudFormationServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub ${Service}CloudFormation
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - cloudformation.amazonaws.com
+            Action: sts:AssumeRole
+  LoadBalancer:
+    Type: AWS::ElasticLoadBalancing::LoadBalancer
+    Properties:
+      AvailabilityZones:
+        - eu-west-1a
+      Listeners:
+        - LoadBalancerPort: '80'
+          InstancePort: '80'
+          Protocol: HTTP
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: ELB ingress group
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: !ImportValue SecurityGroupFromPort
+          ToPort: '80'
+          SourceSecurityGroupOwnerId: !GetAtt LoadBalancer.SourceSecurityGroup.OwnerAlias
+          SourceSecurityGroupName: !GetAtt LoadBalancer.SourceSecurityGroup.GroupName

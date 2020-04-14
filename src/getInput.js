@@ -3,7 +3,6 @@
 import getAllInputs from "./getAllInputs";
 
 export default function getInput(): { file: string, paths: { [string]: string } } {
-  // $FlowFixMe
   const { file, ...paths } = getAllInputs();
 
   if (file == null) {

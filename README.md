@@ -38,6 +38,28 @@ with:
 ```
 sets the `baz` output to `bar` and sets the `providerstage` output (note all lower-case) to `green`.
 
+## CloudFormation
+
+The CloudFormation YAML schema is supported. The input file can contain the CloudFormation template tags:
+
+- `!And`
+- `!Base64`
+- `!Cidr`
+- `!Condition`
+- `!Equals`
+- `!FindInMap`
+- `!GetAtt`
+- `!GetAZs`
+- `!If`
+- `!ImportValue`
+- `!Join`
+- `!Not`
+- `!Or`
+- `!Ref`
+- `!Select`
+- `!Split`
+- `!Sub`
+
 # See Also
 
 [get-json-paths-action](https://github.com/gr2m/get-json-paths-action)
