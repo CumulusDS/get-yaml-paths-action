@@ -80,5 +80,8 @@
     "shx": "^0.3.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
+  },
+  "resolutions": {
+    "kind-of": ">=6.0.3"
   }
 }
