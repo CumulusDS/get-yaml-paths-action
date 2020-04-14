@@ -13,7 +13,7 @@ export default async function main() {
       core.setOutput(name, value);
     }
   } catch (error) {
-    core.setFailed(error);
+    core.setFailed(error.message);
     process.exit(1);
   }
 }
