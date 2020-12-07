@@ -50,7 +50,7 @@
     }
   },
   "dependencies": {
-    "@actions/core": "^1.2.2",
+    "@actions/core": "^1.2.6",
     "js-yaml": "^3.13.1",
     "lodash.get": "^4.4.2"
   },
