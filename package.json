@@ -82,6 +82,7 @@
     "webpack-cli": "^3.3.10"
   },
   "resolutions": {
-    "kind-of": ">=6.0.3"
+    "kind-of": ">=6.0.3",
+    "set-value": "^4.0.1"
   }
 }
