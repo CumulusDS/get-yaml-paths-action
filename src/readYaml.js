@@ -108,7 +108,7 @@ const schema = yaml.Schema.create([
   })
 ]);
 
-export default async function readYaml(filename: string) {
+export default async function readYaml(filename: string): Promise<mixed> {
   const contents = await promises.readFile(filename, "utf8");
   return yaml.safeLoad(contents, { filename, schema });
 }

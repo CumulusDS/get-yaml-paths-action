@@ -9,6 +9,8 @@ export default async function main() {
   try {
     const { file, paths } = getInput();
     const document = await readYaml(file);
+
+    // $FlowFixMe[incompatible-call]
     for (const { name, value } of generateEachPath(document, paths)) {
       core.setOutput(name, value);
     }

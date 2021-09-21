@@ -69,7 +69,7 @@
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-prettier": "^2.6.0",
-    "flow-bin": "^0.112.0",
+    "flow-bin": "^0.142.0",
     "flow-coverage-report": "^0.8.0",
     "flow-typed": "^3.2.1",
     "git-describe": "^4.0.4",

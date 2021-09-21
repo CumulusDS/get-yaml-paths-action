@@ -9,5 +9,6 @@ export default function getInput(): { file: string, paths: { [string]: string } 
     throw new Error("The 'file' input is required.");
   }
 
+  // $FlowFixMe[incompatible-return]
   return { file, paths };
 }
