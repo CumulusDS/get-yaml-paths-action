@@ -2,6 +2,7 @@
 .*/node_modules/config-chain/test/broken.json
 .*/node_modules/license-checker/tests/config/custom_format_broken.json
 .*/lib
+<PROJECT_ROOT>/node_modules/rechoir/node_modules/resolve/test/resolver/malformed_package_json/package.json
 
 [include]
 
