@@ -36,7 +36,7 @@ with:
   bar: foo.bar
   providerStage: provider.stage
 ```
-sets the `baz` output to `bar` and sets the `providerstage` output (note all lower-case) to `green`.
+sets the `bar` output to `baz` and sets the `providerstage` output (note all lower-case) to `green`.
 
 ## CloudFormation
 
