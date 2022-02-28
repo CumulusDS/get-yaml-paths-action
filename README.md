@@ -29,8 +29,8 @@ provider:
 ```
 
 A step definition like this:
-```
-uses: @cumulusds@v0.0.0
+```yml
+uses: cumulusds@v0.0.0
 with:
   file: file.yml
   bar: foo.bar
