@@ -1,0 +1,31 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "07:00"
+      timezone: "America/New_York"
+    labels:
+      - "actions"
+      - "dependabot"
+    assignees:
+      - "jeffsays"
+    reviewers:
+      - "jeffsays"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "07:00"
+      timezone: "America/New_York"
+    labels:
+      - "javascript"
+      - "dependencies"
+      - "dependabot"
+    assignees:
+      - "jeffsays"
+    reviewers:
+      - "jeffsays"
