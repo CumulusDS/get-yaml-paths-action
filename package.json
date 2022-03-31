@@ -65,7 +65,7 @@
     "babel-loader": "^8.1.0",
     "eslint": "6.7.1",
     "eslint-config-airbnb-base": "14.0.0",
-    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-flowtype": "^2.49.3",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jest": "^26.1.3",
