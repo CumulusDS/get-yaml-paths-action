@@ -55,7 +55,7 @@
     "lodash.get": "^4.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
+    "@babel/core": "^7.17.8",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-flow": "^7.8.3",
