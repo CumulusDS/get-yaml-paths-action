@@ -8,7 +8,7 @@ outputs:
   time:
     description: The time we greeted you
 runs:
-  using: node12
+  using: node16
   main: dist/main.js
 branding:
   icon: "box"
