@@ -30,7 +30,7 @@ provider:
 
 A step definition like this:
 ```yaml
-uses: CumulusDS/get-yaml-paths-action@v0.2.0
+uses: CumulusDS/get-yaml-paths-action@v1.0.1
 with:
   file: file.yml
   bar: foo.bar
@@ -47,7 +47,7 @@ qux:
 
 A step definition like this:
 ```yaml
-uses: CumulusDS/get-yaml-paths-action@v0.2.0
+uses: CumulusDS/get-yaml-paths-action@v1.0.1
 with:
   file: qux.yml
   bars: qux[].bar
@@ -88,7 +88,7 @@ foo-bar: baz
 
 Then use a step definition like this:
 ```yaml
-uses: CumulusDS/get-yaml-paths-action@v0.2.0
+uses: CumulusDS/get-yaml-paths-action@v1.0.1
 with:
   file: file.yml
   foobar: '"foo-bar"'
