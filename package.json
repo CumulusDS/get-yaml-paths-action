@@ -51,8 +51,8 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "js-yaml": "^3.13.1",
-    "lodash.get": "^4.4.2"
+    "jmespath": "^0.16.0",
+    "js-yaml": "^3.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

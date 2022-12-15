@@ -10,10 +10,19 @@ describe("main", () => {
   const OLD_ENV = process.env;
 
   it("calls setOutput when successful", async () => {
-    process.env = { INPUT_FILE: "env/test.yml", INPUT_A: "foo.bar", INPUT_B: "provider.stage", NOT_INPUT_C: "c" };
+    process.env = {
+      INPUT_FILE: "env/test.yml",
+      INPUT_A: "foo.bar",
+      INPUT_B: "provider.stage",
+      NOT_INPUT_C: "c",
+      INPUT_D: "qux[].bar",
+      INPUT_E: "foo"
+    };
     await main();
     expect(core.setOutput).toHaveBeenCalledWith("a", "baz");
     expect(core.setOutput).toHaveBeenCalledWith("b", "green");
+    expect(core.setOutput).toHaveBeenCalledWith("d", '["hello","world"]');
+    expect(core.setOutput).toHaveBeenCalledWith("e", '{"bar":"baz"}');
   });
 
   it("calls setFailed when unsuccessful", async () => {
