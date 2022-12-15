@@ -5,3 +5,4 @@ provider:
 qux:
   - bar: hello
   - bar: world
+foo-bar: 7

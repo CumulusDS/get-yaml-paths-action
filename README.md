@@ -77,6 +77,25 @@ The CloudFormation YAML schema is supported. The input file can contain the Clou
 - `!Split`
 - `!Sub`
 
+## Possible Issues
+
+### Quoting Special Characters
+
+Keys with hyphens and other special characters should be quoted in the query. For example, given an input file like this:
+```yaml
+foo-bar: baz
+```
+
+Then use a step definition like this:
+```yaml
+uses: CumulusDS/get-yaml-paths-action@v0.2.0
+with:
+  file: file.yml
+  foobar: '"foo-bar"'
+```
+
+The query should be `"foo-bar"` to get the value of the `foo-bar` key. Without the quotes, the query would be interpreted as a numerical subtraction, which would result in an error.
+
 # See Also
 
 [get-json-paths-action](https://github.com/gr2m/get-json-paths-action)

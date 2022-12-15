@@ -16,13 +16,15 @@ describe("main", () => {
       INPUT_B: "provider.stage",
       NOT_INPUT_C: "c",
       INPUT_D: "qux[].bar",
-      INPUT_E: "foo"
+      INPUT_E: "foo",
+      INPUT_F: '"foo-bar"'
     };
     await main();
     expect(core.setOutput).toHaveBeenCalledWith("a", "baz");
     expect(core.setOutput).toHaveBeenCalledWith("b", "green");
     expect(core.setOutput).toHaveBeenCalledWith("d", '["hello","world"]');
     expect(core.setOutput).toHaveBeenCalledWith("e", '{"bar":"baz"}');
+    expect(core.setOutput).toHaveBeenCalledWith("f", 7);
   });
 
   it("calls setFailed when unsuccessful", async () => {

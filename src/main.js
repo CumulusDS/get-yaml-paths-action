@@ -15,6 +15,7 @@ export default async function main() {
       core.setOutput(name, value);
     }
   } catch (error) {
+    console.log(error);
     core.setFailed(error.message);
     process.exit(1);
   }
