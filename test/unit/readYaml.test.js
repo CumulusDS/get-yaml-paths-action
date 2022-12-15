@@ -9,6 +9,7 @@ describe("readYaml", () => {
         "foo": Object {
           "bar": "baz",
         },
+        "foo-bar": 7,
         "provider": Object {
           "stage": "green",
         },
