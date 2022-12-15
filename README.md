@@ -2,7 +2,7 @@
 
 This action reads a YAML file and outputs selected properties.
 
-The action uses lodash.get to access properties at the provided paths. The `file` input is the only required input. All other inputs are mapped into equally named outputs with the value at the given paths.
+The action uses a [JMESPath](https://jmespath.org/) query to access properties at the provided paths. The `file` is the only input required. All other inputs are mapped into equally named outputs with the value at the given paths.
 
 ## Inputs
 
@@ -10,9 +10,9 @@ The action uses lodash.get to access properties at the provided paths. The `file
 
 **Required** The name of the file to load.
 
-### `name: path`
+### `name: query`
 
-Give each path to look-up as a `name: path` input pair.
+Give each path to look-up as a `name: query` input pair. 
 
 ## Outputs
 
@@ -29,14 +29,31 @@ provider:
 ```
 
 A step definition like this:
-```yml
-uses: CumulusDS/get-yaml-paths-action@v0.1.0
+```yaml
+uses: CumulusDS/get-yaml-paths-action@v0.2.0
 with:
   file: file.yml
   bar: foo.bar
   providerStage: provider.stage
 ```
 sets the `bar` output to `baz` and sets the `providerstage` output (note all lower-case) to `green`.
+
+Object and array outputs are JSON-serialized. For example, given an input file `qux.yml`:
+```yaml
+qux:
+  - bar: hello
+  - bar: world
+```
+
+A step definition like this:
+```yaml
+uses: CumulusDS/get-yaml-paths-action@v0.2.0
+with:
+  file: qux.yml
+  bars: qux[].bar
+```
+
+Sets the `bars` output to `["hello","world"]`.
 
 ## CloudFormation
 

@@ -2,3 +2,6 @@ foo:
   bar: baz
 provider:
   stage: green
+qux:
+  - bar: hello
+  - bar: world
