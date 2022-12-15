@@ -96,6 +96,15 @@ with:
 
 The query should be `"foo-bar"` to get the value of the `foo-bar` key. Without the quotes, the query would be interpreted as a numerical subtraction, which would result in an error.
 
+### GitHub Runner Warning
+
+The inputs to this action cannot be statically defined or listed in the actions.yml definition. This results in a nuisance warning from the Actions Runner like this:
+```
+Warning: Unexpected input(s) '...', valid inputs are ['file']
+```
+
+The [actions/runner#514](https://github.com/actions/runner/issues/514) issue tracks this limitation of the Actions Runner.
+
 # See Also
 
 [get-json-paths-action](https://github.com/gr2m/get-json-paths-action)
