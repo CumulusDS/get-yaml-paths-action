@@ -6,6 +6,7 @@
 <PROJECT_ROOT>/node_modules/resolve/test/resolver/malformed_package_json/package.json
 <PROJECT_ROOT>/node_modules/jest-resolve/node_modules/resolve/test/resolver/malformed_package_json/package.json
 <PROJECT_ROOT>/node_modules/normalize-package-data/node_modules/resolve/test/resolver/malformed_package_json/package.json
+<PROJECT_ROOT>/node_modules/@babel/helper-define-polyfill-provider/node_modules/resolve/test/resolver/malformed_package_json/package.json
 
 [include]
 
