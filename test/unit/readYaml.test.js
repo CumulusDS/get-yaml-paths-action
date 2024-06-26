@@ -5,19 +5,19 @@ import readYaml from "../../src/readYaml";
 describe("readYaml", () => {
   it("reads a yaml file", () =>
     expect(readYaml("env/test.yml")).resolves.toMatchInlineSnapshot(`
-      Object {
-        "foo": Object {
+      {
+        "foo": {
           "bar": "baz",
         },
         "foo-bar": 7,
-        "provider": Object {
+        "provider": {
           "stage": "green",
         },
-        "qux": Array [
-          Object {
+        "qux": [
+          {
             "bar": "hello",
           },
-          Object {
+          {
             "bar": "world",
           },
         ],
