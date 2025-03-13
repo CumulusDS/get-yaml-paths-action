@@ -1,0 +1,4 @@
+# Ignore build artifacts
+/dist/
+/lib/
+/var/
