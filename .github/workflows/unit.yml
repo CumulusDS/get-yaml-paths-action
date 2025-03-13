@@ -1,0 +1,21 @@
+name: Unit
+on:
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches-ignore:
+      - 'dependabot/**'
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+jobs:
+  unit:
+    name: Unit
+    if: | # If the PR is coming from a fork (pull_request_target), ensure it's opened by "dependabot[bot]".
+      (github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]') ||
+      (github.event_name != 'pull_request_target' && github.actor != 'dependabot[bot]')
+    uses: CumulusDS/workflows-public/.github/workflows/package-unit.yml@master
+    secrets: inherit
+    with: # account for dependabot; otherwise we want blank ref for downstream actions
+      ref: ${{ github.event.pull_request.head.sha || '' }}
