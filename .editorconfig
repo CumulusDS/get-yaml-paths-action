@@ -1,0 +1,35 @@
+# editorconfig.org
+# top-most EditorConfig file for this level
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 120
+
+[*.{bash,sh,zsh}]
+indent_style = space
+indent_size = 2
+
+[*.{md,mdx}]
+trim_trailing_whitespace = false
+
+[*.html]
+insert_final_newline = false
+
+[*.svg]
+insert_final_newline = false
+
+[{.gitmodules,.gitignore}]
+indent_style = tab
+indent_size = 4
+
+[CODEOWNERS]
+indent_size = 4
+
+[package.json]
+max_line_length = unset
