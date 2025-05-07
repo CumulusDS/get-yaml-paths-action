@@ -14,6 +14,9 @@ describe("outputEachPath", () => {
           }
         )
       )
-    ).toEqual([{ name: "bar", value: "baz" }, { name: "stage", value: "green" }]);
+    ).toEqual([
+      { name: "bar", value: "baz" },
+      { name: "stage", value: "green" }
+    ]);
   });
 });

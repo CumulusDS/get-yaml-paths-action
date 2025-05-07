@@ -26,6 +26,7 @@
     "npm:tag:remove": "yarn npm tag remove ${npm_package_name} $0",
     "prepack": "yarn run build && yarn run build:flowtypes",
     "prepare": "yarn clean && yarn build",
+    "prettier:write": "prettier --write  \"{src,test}/**/*.{js,jsx,yml}\" \"*.{js,yml}\"",
     "publish:major": "yarn version major && yarn publish:sync",
     "publish:minor": "yarn version minor && yarn publish:sync",
     "publish:patch": "yarn version patch && yarn publish:sync",
