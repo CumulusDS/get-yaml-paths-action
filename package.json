@@ -68,7 +68,7 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "jmespath": "^0.16.0",
-    "js-yaml": "^3.14.1"
+    "js-yaml": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
