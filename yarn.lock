@@ -5311,7 +5311,7 @@ __metadata:
     git-describe: "npm:^4.1.1"
     jest: "npm:^29.7.0"
     jmespath: "npm:^0.16.0"
-    js-yaml: "npm:^3.14.1"
+    js-yaml: "npm:^4.2.0"
     license-checker: "npm:^25.0.1"
     prettier: "npm:^1.19.1"
     shx: "npm:^0.3.4"
@@ -6810,15 +6810,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:^3.14.1":
-  version: 3.14.1
-  resolution: "js-yaml@npm:3.14.1"
+"js-yaml@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "js-yaml@npm:4.2.0"
   dependencies:
-    argparse: "npm:^1.0.7"
-    esprima: "npm:^4.0.0"
+    argparse: "npm:^2.0.1"
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: 10/9e22d80b4d0105b9899135365f746d47466ed53ef4223c529b3c0f7a39907743fdbd3c4379f94f1106f02755b5e90b2faaf84801a891135544e1ea475d1a1379
+  checksum: 10/51de2067a2b44b07ba5206132e56005f8b568ff279bb4d2f645068958c56fa4827d40a6841c983234671fa0a134bf094d0b0717873c2a3d319185297af145a6d
   languageName: node
   linkType: hard
 
