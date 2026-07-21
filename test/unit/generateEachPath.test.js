@@ -10,13 +10,13 @@ describe("outputEachPath", () => {
           { foo: { bar: "baz" }, provider: { stage: "green" } },
           {
             bar: "foo.bar",
-            stage: "provider.stage"
-          }
-        )
-      )
+            stage: "provider.stage",
+          },
+        ),
+      ),
     ).toEqual([
       { name: "bar", value: "baz" },
-      { name: "stage", value: "green" }
+      { name: "stage", value: "green" },
     ]);
   });
 });
