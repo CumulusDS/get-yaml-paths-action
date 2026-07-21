@@ -17,7 +17,7 @@ describe("main", () => {
       NOT_INPUT_C: "c",
       INPUT_D: "qux[].bar",
       INPUT_E: "foo",
-      INPUT_F: '"foo-bar"'
+      INPUT_F: '"foo-bar"',
     };
     await main();
     expect(core.setOutput).toHaveBeenCalledWith("a", "baz");

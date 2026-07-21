@@ -5,7 +5,7 @@ import jmespath from "jmespath";
 
 export default function* generateEachPath(
   document: {},
-  paths: { [string]: string }
+  paths: { [string]: string },
 ): Iterable<{ name: string, value: string }> {
   for (const name of Object.keys(paths)) {
     const query = paths[name];

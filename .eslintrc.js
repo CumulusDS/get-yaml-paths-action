@@ -4,10 +4,10 @@ module.exports = {
   rules: {
     "linebreak-style": "off",
     "no-console": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
   },
   plugins: ["jest", "flowtype"],
   env: {
-    "jest/globals": true
-  }
+    "jest/globals": true,
+  },
 };

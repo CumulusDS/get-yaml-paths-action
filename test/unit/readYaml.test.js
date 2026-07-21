@@ -27,6 +27,6 @@ describe("readYaml", () => {
   it("reads a CloudFormation yaml file", () =>
     expect(readYaml("env/cfn.yml")).resolves.toMatchObject({
       // eslint-disable-next-line no-template-curly-in-string
-      Resources: { CloudFormationServiceRole: { Properties: { RoleName: { "Fn::Sub": "${Service}CloudFormation" } } } }
+      Resources: { CloudFormationServiceRole: { Properties: { RoleName: { "Fn::Sub": "${Service}CloudFormation" } } } },
     }));
 });
