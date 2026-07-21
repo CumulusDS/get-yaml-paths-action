@@ -7,19 +7,41 @@ charset = utf-8
 end_of_line = lf
 indent_size = 2
 indent_style = space
+indent_brace_style = K&R
 insert_final_newline = true
 trim_trailing_whitespace = true
 max_line_length = 120
+quote_type = double
 
 [*.{bash,sh,zsh}]
 indent_style = space
 indent_size = 2
+# https://gitea.wildfiregames.com/0ad/0ad/commit/038decb12ef05293dd75e5d5e043420545feff79 :
+# function_next_line = true
+# switch_case_indent = true
 
-[*.{md,mdx}]
-trim_trailing_whitespace = false
+[{*.Dockerfile,DOCKERFILE}]
+indent_size = 4
+indent_style = space
 
 [*.html]
 insert_final_newline = false
+
+#[*.{json,yml,yaml}]
+#indent_size = 2
+#indent_style = space
+
+[*.{md,mdx}]
+#indent_size = 2
+#indent_style = space
+# Note: VS Code may not honor the following setting
+# See: https://github.com/editorconfig/editorconfig-vscode/issues/153
+trim_trailing_whitespace = false
+
+[*.py]
+# Note: Undercloud components use PEP8 line length of 79
+# Note: for VS Code, set "editor.rulers":[79] in your workspace settings
+max_line_length = 79
 
 [*.svg]
 insert_final_newline = false
@@ -30,6 +52,10 @@ indent_size = 4
 
 [CODEOWNERS]
 indent_size = 4
+
+[Makefile]
+indent_style = tab
+indent_size = unset
 
 [package.json]
 max_line_length = unset
