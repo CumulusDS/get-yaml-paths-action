@@ -1,6 +1,7 @@
 // @flow
 
 import { promises } from "fs";
+import path from "path";
 import yaml from "js-yaml";
 
 const schema = yaml.Schema.create([
@@ -109,6 +110,12 @@ const schema = yaml.Schema.create([
 ]);
 
 export default async function readYaml(filename: string): Promise<mixed> {
-  const contents = await promises.readFile(filename, "utf8");
+  const normalized = path.normalize(filename);
+
+  if (path.isAbsolute(normalized) || normalized.split(path.sep).includes("..")) {
+    throw new Error(`Invalid 'file' input: ${filename} must be a relative path within the workspace.`);
+  }
+
+  const contents = await promises.readFile(normalized, "utf8");
   return yaml.safeLoad(contents, { filename, schema });
 }
