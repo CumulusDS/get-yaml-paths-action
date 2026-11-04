@@ -1497,6 +1497,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cumulusds/tsconfig@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@cumulusds/tsconfig@npm:0.0.16"
+  checksum: 10/c23cde38fb49f6155a3955921a96fc84af0a699393799de495ffe4e79074ed5267345bbdcdd62c1ca3ab11e8e1508ad9962d62d15ce70a93f92fe65497ab44dc
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.0":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -5889,6 +5896,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.29.7"
     "@babel/preset-flow": "npm:^7.29.7"
     "@cumulusds/flow-coverage-report": "npm:^0.8.1"
+    "@cumulusds/tsconfig": "npm:^0.0.16"
     "@vitest/coverage-v8": "npm:^5.0.5"
     "@vitest/eslint-plugin": "npm:^1.6.28"
     babel-eslint: "npm:10.1.0"
@@ -5910,6 +5918,7 @@ __metadata:
     license-checker: "npm:^25.0.1"
     prettier: "npm:^3.9.10"
     shx: "npm:^0.4.0"
+    typescript: "npm:^6.0.3"
     vite: "npm:^8.3.5"
     vitest: "npm:^5.0.5"
     webpack: "npm:^5.112.2"
@@ -10025,6 +10034,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "typescript@npm:6.0.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10/0ef2357a4cffd916b52b683a021cdab0f81eea4e9aa35f2d254581c9a5106da02224e3392e1b0ed42b7a48f80c966e5f52b8e1a27941fa0523c1705a9c2e0330
+  languageName: node
+  linkType: hard
+
 "typescript@npm:~4.4.4":
   version: 4.4.4
   resolution: "typescript@npm:4.4.4"
@@ -10032,6 +10051,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/20663db4fb18d0f6b5778b8103c5a7d5ad784947c7e94259c302aefd6413f4e9ec8075af5e8b5ee972cc7ea167aa74cb8735f31468b57c79c8013f601bd793cf
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^6.0.3#optional!builtin<compat/typescript>":
+  version: 6.0.3
+  resolution: "typescript@patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10/22b67a18dafedf9b1468b64ca20d9aa02ea61d449b65413d8aa6552aeb63f52ef369e86beb25b6b4c91a803d9726ee5c196f391a9b64201263263410a4223ee6
   languageName: node
   linkType: hard
 
