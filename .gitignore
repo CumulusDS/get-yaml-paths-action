@@ -49,3 +49,5 @@ var/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+.mcp.json
