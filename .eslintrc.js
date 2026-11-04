@@ -10,4 +10,12 @@ module.exports = {
   env: {
     "jest/globals": true,
   },
+  overrides: [
+    {
+      files: ["vitest.config.mts"],
+      rules: {
+        "import/no-extraneous-dependencies": "off",
+      },
+    },
+  ],
 };
