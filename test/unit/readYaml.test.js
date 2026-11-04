@@ -1,5 +1,6 @@
 // @flow
 
+import { describe, expect, it } from "vitest";
 import readYaml from "../../src/readYaml";
 
 describe("readYaml", () => {

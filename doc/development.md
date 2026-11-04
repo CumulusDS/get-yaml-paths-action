@@ -96,13 +96,13 @@ For others, we've included a .prettierrc. It has not been extensively tested aga
 
 Several commands are defined by the package.json scripts.
 
-`yarn test` runs the comprehensive set of automated tests. This includes the jest unit test, flow and eslint checks.
+`yarn test` runs the comprehensive set of automated tests. This includes the vitest unit tests, flow and eslint checks.
 
 `yarn test:flow:status` checks for flow type and lint errors. It is one of the checks included in `yarn test`.
 
 `yarn git:push` pushes commits and tags to GitHub.
 
-`yarn test:jest` runs the jest unit tests. It is one of the checks included in `yarn test`.
+`yarn test:vite` runs the vitest unit tests. It is one of the checks included in `yarn test`.
 
 `yarn lint` runs the ESLint check. It is one of the checks included in `yarn test`. Some lint errors can be automatically fixed by running `yarn lint --fix`.
 
@@ -186,7 +186,7 @@ High unit test coverage is essential for the sustainability of the software syst
 
 [Flow](https://flow.org/en/) is used to declare interface types. Libraries should use static type checking, because it provides users with helpful auto-completions in the IDE. These hints reduce typos and make it easier to discover the library's functionality and correctly use its interface. Type checking can also expose interface errors that are undetected in unit testing due to mocks.
 
-To invoke the test suite, run `yarn test`. This runs ESLint, the Jest unit tests and the Flow type checker.
+To invoke the test suite, run `yarn test`. This runs ESLint, the Vitest unit tests and the Flow type checker.
 
 ## ESLint
 
@@ -223,11 +223,11 @@ A problem with javascript is that unit tests are often narrowly mocked. This can
 
 It is relatively easy to learn to write the type annotations, and the diagnostic output of the flow compiler is helpful. This baseline configuration is quite picky, because the flow "linter" is enabled. Also, tests are type-checked and linted (working from the perspective that interface agreement is quite important in tests). The flow linter strongly encourages the developers to add type annotations everywhere where the type cannot be inferred. We'll need to reconsider whether the pickiness is tolerable after living with it for a few weeks. Since type-checking is not a native part of javascript, there tends to be more type friction around external libraries than there would be in a strongly typed language. The flow-typed library partially mitigates this friction.
 
-## Jest
+## Vitest
 
-Jest is used to run tests. To execute the jest-based unit tests, run `yarn test:unit`. Complete unit test coverage is expected, and Jest is configured to fail if coverage is less than 100%. The tests should be written in a literate style, so that they help to document the intended behavior of the software. High test coverage gives confidence that the software works as intended.
+Vitest is used to run tests. To execute the vitest-based unit tests, run `yarn test:vite`. Complete unit test coverage is expected, and Vitest is configured to fail if coverage is less than 100%. The tests should be written in a literate style, so that they help to document the intended behavior of the software. High test coverage gives confidence that the software works as intended.
 
-The project is configured with a Continuous Integration server. The Continuous Integration server runs the tests and lint using the command yarn test. When AppVeyor is used for CI, the jest tests are reported to the test result collector.
+The project is configured with a Continuous Integration server. The Continuous Integration server runs the tests and lint using the command yarn test. When AppVeyor is used for CI, the vitest tests are reported to the test result collector.
 
 ## Continuous Integration
 

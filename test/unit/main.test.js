@@ -1,10 +1,10 @@
 // @flow
 
+import { afterAll, describe, expect, it, vi } from "vitest";
 import * as core from "@actions/core";
 import main from "../../src/main";
 
-jest.mock("process");
-jest.mock("@actions/core");
+vi.mock("@actions/core");
 
 describe("main", () => {
   const OLD_ENV = process.env;
@@ -28,15 +28,15 @@ describe("main", () => {
   });
 
   it("calls setFailed when unsuccessful", async () => {
-    // $FlowFixMe
-    process.exit = jest.fn();
+    const exit = vi.spyOn(process, "exit").mockImplementation(() => undefined);
     process.env = { INPUT_FILE: "env/not-found.yml", INPUT_A: "foo.bar", INPUT_B: "provider.stage", NOT_INPUT_C: "c" };
     await main();
     expect(core.setFailed).toHaveBeenCalledWith("ENOENT: no such file or directory, open 'env/not-found.yml'");
-    expect(process.exit).toHaveBeenCalledWith(1);
+    expect(exit).toHaveBeenCalledWith(1);
   });
 
   afterAll(() => {
     process.env = OLD_ENV;
+    vi.restoreAllMocks();
   });
 });
