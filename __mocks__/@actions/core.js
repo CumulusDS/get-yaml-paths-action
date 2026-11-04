@@ -1,4 +1,6 @@
 // @flow
 
-export const setOutput: $FlowFixMe = jest.fn<$ReadOnlyArray<string>, void>();
-export const setFailed: $FlowFixMe = jest.fn<$ReadOnlyArray<string>, void>();
+import { vi } from "vitest";
+
+export const setOutput: $FlowFixMe = vi.fn();
+export const setFailed: $FlowFixMe = vi.fn();
