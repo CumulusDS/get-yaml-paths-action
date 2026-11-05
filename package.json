@@ -6,7 +6,7 @@
   "author": "Cumulus Digital Systems",
   "license": "MIT",
   "engines": {
-    "node": ">=24"
+    "node": "^24.22.1 || >=26.12.1"
   },
   "main": "lib/index.js",
   "src": [
@@ -34,14 +34,14 @@
     "publish:prepatch": "yarn version prepatch && yarn publish:sync",
     "publish:prerelease": "yarn npm publish",
     "publish:sync": "yarn run git:commit && yarn run git:tag && yarn git:push",
-    "test": "yarn run test:flow && yarn run test:style && yarn run test:jest",
+    "test": "yarn run test:flow && yarn run test:style && yarn run test:vite",
     "test:flow": "yarn run test:flow:coverage-report && yarn run test:flow:status",
     "test:flow:coverage-report": "flow-coverage-report -i 'src/**/*.js' -x 'test/**/*.js' -t html -t text --threshold 85 --output-dir var/coverage/flow",
     "test:flow:status": "flow status",
-    "test:jest": "jest --color",
     "test:lint": "eslint '{src,test}/**/*.{js,jsx,ts,tsx}'",
     "test:prettier": "prettier --list-different \"{src,test}/**/*.{js,jsx,yml}\" \"*.{js,yml}\"",
     "test:style": "yarn run test:lint && yarn run test:prettier",
+    "test:vite": "vitest run --color --coverage",
     "version:feature": "yarn version ${npm_package_version}-$0.$(./build/git-distance).g$(git rev-parse --short HEAD)",
     "version:major": "yarn version --new-version major",
     "version:minor": "yarn version --new-version minor",
@@ -49,23 +49,6 @@
     "version:preminor": "yarn version --new-version preminor",
     "version:prepatch": "yarn version --new-version prepatch",
     "version:prerelease": "yarn version ${npm_package_version}"
-  },
-  "jest": {
-    "verbose": true,
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "testEnvironment": "node",
-    "coverageDirectory": "var/coverage/test",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 37,
-        "lines": 60,
-        "statements": 60
-      }
-    }
   },
   "dependencies": {
     "@actions/core": "^3.0.1",
@@ -80,23 +63,25 @@
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-flow": "^7.29.7",
     "@cumulusds/flow-coverage-report": "^0.8.1",
+    "@vitest/coverage-v8": "^5.0.5",
+    "@vitest/eslint-plugin": "^1.6.28",
     "babel-eslint": "10.1.0",
-    "babel-jest": "^30.5.2",
     "babel-loader": "^10.1.1",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jest": "^29.17.0",
     "eslint-plugin-prettier": "^5.5.7",
     "flow-bin": "^0.142.0",
     "flow-typed": "^3.9.0",
     "git-describe": "^4.1.1",
-    "jest": "^30.5.2",
     "license-checker": "^25.0.1",
     "prettier": "^3.9.10",
     "shx": "^0.4.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5",
     "webpack": "^5.112.2",
     "webpack-cli": "^5.1.4"
   },
