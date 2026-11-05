@@ -7,6 +7,7 @@
     "outDir": "./lib",
     "rootDir": "${configDir}/src",
     "tsBuildInfoFile": "./node_modules/.cache/tsconfig.build.tsbuildinfo",
+    "types": ["node"],
     "verbatimModuleSyntax": false,
     "paths": {
       "@src/*": ["./src/*"]
