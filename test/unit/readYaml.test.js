@@ -29,4 +29,13 @@ describe("readYaml", () => {
       // eslint-disable-next-line no-template-curly-in-string
       Resources: { CloudFormationServiceRole: { Properties: { RoleName: { "Fn::Sub": "${Service}CloudFormation" } } } },
     }));
+
+  it("rejects an absolute path", () =>
+    expect(readYaml("/etc/passwd")).rejects.toThrow("must be a relative path within the workspace"));
+
+  it("rejects a path that traverses out of the workspace", () =>
+    expect(readYaml("../../etc/passwd")).rejects.toThrow("must be a relative path within the workspace"));
+
+  it("rejects a traversal hidden behind a leading directory", () =>
+    expect(readYaml("env/../../secret.yml")).rejects.toThrow("must be a relative path within the workspace"));
 });
