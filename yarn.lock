@@ -1336,13 +1336,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cumulusds/tsconfig@npm:^0.0.16":
-  version: 0.0.16
-  resolution: "@cumulusds/tsconfig@npm:0.0.16"
-  checksum: 10/c23cde38fb49f6155a3955921a96fc84af0a699393799de495ffe4e79074ed5267345bbdcdd62c1ca3ab11e8e1508ad9962d62d15ce70a93f92fe65497ab44dc
-  languageName: node
-  linkType: hard
-
 "@discoveryjs/json-ext@npm:^0.5.0":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -4543,7 +4536,6 @@ __metadata:
     "@babel/preset-env": "npm:^7.29.7"
     "@babel/preset-flow": "npm:^7.29.7"
     "@cumulusds/flow-coverage-report": "npm:^0.8.1"
-    "@cumulusds/tsconfig": "npm:^0.0.16"
     "@vitest/coverage-v8": "npm:^5.0.5"
     "@vitest/eslint-plugin": "npm:^1.6.28"
     babel-eslint: "npm:10.1.0"

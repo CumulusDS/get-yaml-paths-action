@@ -1,16 +1,25 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": ["@cumulusds/tsconfig/nodenext"],
   "compilerOptions": {
     "composite": true,
+    "declaration": true,
+    "esModuleInterop": true, // Emit additional JavaScript to ease importing CommonJS modules
+    "forceConsistentCasingInFileNames": true, // Ensure consistent casing in file names
+    "jsx": "react", // Compile JSX with React.createElement (React 16)
+    "module": "nodenext", // Specify module code generation
     "noEmit": false,
     "outDir": "./lib",
-    "rootDir": "${configDir}/src",
-    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.build.tsbuildinfo",
-    "verbatimModuleSyntax": false,
     "paths": {
       "@src/*": ["./src/*"]
     },
+    "resolveJsonModule": true, // Allow importing JSON schemas
+    "rootDir": "${configDir}/src",
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "strict": true, // Enable all strict type-checking options
+    "target": "ES2022", // Specify ECMAScript target version
+    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.build.tsbuildinfo",
+    "types": ["node"],
+    "verbatimModuleSyntax": false,
   },
   "include": ["src"]
 }

@@ -63,7 +63,6 @@
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-flow": "^7.29.7",
     "@cumulusds/flow-coverage-report": "^0.8.1",
-    "@cumulusds/tsconfig": "^0.0.16",
     "@vitest/coverage-v8": "^5.0.5",
     "@vitest/eslint-plugin": "^1.6.28",
     "babel-eslint": "10.1.0",
