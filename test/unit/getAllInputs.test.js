@@ -1,5 +1,6 @@
 // @flow
 
+import { afterAll, describe, expect, it } from "vitest";
 import getAllInputs from "../../src/getAllInputs";
 
 describe("getAllInputs", () => {
