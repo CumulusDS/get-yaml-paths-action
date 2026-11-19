@@ -8,5 +8,5 @@
     "tsBuildInfoFile": "./node_modules/.cache/tsconfig.tsbuildinfo",
     "verbatimModuleSyntax": false
   },
-  "include": ["src", "scripts", "src", "test", "./*.cts", "./*.mts", "./*.ts"]
+  "include": ["src", "scripts", "test", "__mocks__", "./*.cts", "./*.mts", "./*.ts"]
 }

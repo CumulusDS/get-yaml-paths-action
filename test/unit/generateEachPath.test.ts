@@ -1,5 +1,3 @@
-// @flow
-
 import { describe, expect, it } from "vitest";
 import generateEachPath from "../../src/generateEachPath";
 

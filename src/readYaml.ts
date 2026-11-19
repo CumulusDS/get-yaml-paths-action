@@ -1,5 +1,3 @@
-// @flow
-
 import { promises } from "fs";
 import path from "path";
 import yaml from "js-yaml";
@@ -7,109 +5,109 @@ import yaml from "js-yaml";
 const schema = yaml.Schema.create([
   new yaml.Type("!And", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::And": data };
     },
   }),
   new yaml.Type("!Base64", {
     kind: "mapping",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Base64": data };
     },
   }),
   new yaml.Type("!Cidr", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Cidr": data };
     },
   }),
   new yaml.Type("!Condition", {
     kind: "scalar",
-    construct(data) {
+    construct(data: unknown) {
       return { Condition: data };
     },
   }),
   new yaml.Type("!Equals", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Equals": data };
     },
   }),
   new yaml.Type("!FindInMap", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::FindInMap": data };
     },
   }),
   new yaml.Type("!GetAtt", {
     kind: "scalar",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::GetAtt": data };
     },
   }),
   new yaml.Type("!GetAZs", {
     kind: "scalar",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::GetAZs": data };
     },
   }),
   new yaml.Type("!If", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::If": data };
     },
   }),
   new yaml.Type("!ImportValue", {
     kind: "scalar",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::ImportValue": data };
     },
   }),
   new yaml.Type("!Join", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Join": data };
     },
   }),
   new yaml.Type("!Not", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Not": data };
     },
   }),
   new yaml.Type("!Or", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Or": data };
     },
   }),
   new yaml.Type("!Ref", {
     kind: "scalar",
-    construct(data) {
+    construct(data: unknown) {
       return { Ref: data };
     },
   }),
   new yaml.Type("!Select", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Select": data };
     },
   }),
   new yaml.Type("!Split", {
     kind: "sequence",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Split": data };
     },
   }),
   new yaml.Type("!Sub", {
     kind: "scalar",
-    construct(data) {
+    construct(data: unknown) {
       return { "Fn::Sub": data };
     },
   }),
 ]);
 
-export default async function readYaml(filename: string): Promise<mixed> {
+export default async function readYaml(filename: string): Promise<unknown> {
   const normalized = path.normalize(filename);
 
   if (path.isAbsolute(normalized) || normalized.split(path.sep).includes("..")) {
