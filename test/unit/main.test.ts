@@ -1,6 +1,5 @@
-// @flow
-
 import { afterAll, describe, expect, it, vi } from "vitest";
+import { promises } from "fs";
 import * as core from "@actions/core";
 import main from "../../src/main";
 
@@ -28,10 +27,19 @@ describe("main", () => {
   });
 
   it("calls setFailed when unsuccessful", async () => {
-    const exit = vi.spyOn(process, "exit").mockImplementation(() => undefined);
+    const exit = vi.spyOn(process, "exit").mockImplementation(() => undefined as never);
     process.env = { INPUT_FILE: "env/not-found.yml", INPUT_A: "foo.bar", INPUT_B: "provider.stage", NOT_INPUT_C: "c" };
     await main();
     expect(core.setFailed).toHaveBeenCalledWith("ENOENT: no such file or directory, open 'env/not-found.yml'");
+    expect(exit).toHaveBeenCalledWith(1);
+  });
+
+  it("calls setFailed with a stringified value when a non-Error is thrown", async () => {
+    const exit = vi.spyOn(process, "exit").mockImplementation(() => undefined as never);
+    vi.spyOn(promises, "readFile").mockRejectedValueOnce("not an error");
+    process.env = { INPUT_FILE: "env/test.yml", INPUT_A: "foo.bar" };
+    await main();
+    expect(core.setFailed).toHaveBeenCalledWith("not an error");
     expect(exit).toHaveBeenCalledWith(1);
   });
 
